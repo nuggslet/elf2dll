@@ -1,0 +1,7 @@
+build/
+.vs/
+Debug/
+Release/
+elf2dll
+elf2dll.vcxproj.user
+*.o
