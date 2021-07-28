@@ -21,6 +21,12 @@
     <ClCompile Include="src\elf2dll.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\utils.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\elfio\elf_types.hpp">
@@ -67,6 +73,15 @@
     </ClInclude>
     <ClInclude Include="src\elfio\elfio_version.hpp">
       <Filter>Header Files\elfio</Filter>
+    </ClInclude>
+    <ClInclude Include="src\elf2dll.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -98,10 +98,24 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DINO_BSSHACK</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\elf2dll.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\utils.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\elf2dll.hpp" />
     <ClInclude Include="src\elfio\elfio.hpp" />
     <ClInclude Include="src\elfio\elfio_array.hpp" />
     <ClInclude Include="src\elfio\elfio_dump.hpp" />
@@ -117,6 +131,8 @@
     <ClInclude Include="src\elfio\elfio_utils.hpp" />
     <ClInclude Include="src\elfio\elfio_version.hpp" />
     <ClInclude Include="src\elfio\elf_types.hpp" />
+    <ClInclude Include="src\types.h" />
+    <ClInclude Include="src\utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

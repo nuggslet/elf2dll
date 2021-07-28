@@ -5,9 +5,8 @@ SOURCES  := src
 INCLUDES := src/elfio src
 OUTPUT   := elf2dll
 
-FLAGS    := -O3 -Wall
-CFLAGS    = $(FLAGS) -std=gnu11
-CXXFLAGS  = $(FLAGS) -std=gnu++11
+CFLAGS    = $(FLAGS) -std=gnu11 -O3 -Wall
+CXXFLAGS  = $(FLAGS) -std=gnu++11 -O3 -Wall
 
 ifeq ($(OS),Windows_NT)
 	OUTBIN := $(OUTPUT).exe
@@ -17,7 +16,6 @@ endif
 
 CFILES   := $(foreach dir,$(SOURCES),$(wildcard $(dir)/*.c))
 CXXFILES := $(foreach dir,$(SOURCES),$(wildcard $(dir)/*.cpp))
-
 
 OFILES   := $(foreach file,$(CFILES),$(file:.c=.o)) \
             $(foreach file,$(CXXFILES),$(file:.cpp=.o))
