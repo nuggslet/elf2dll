@@ -425,7 +425,7 @@ bool dino_dll::exports_patch(void)
 	// otherwise this field contains the true .bss size to set in DLLS.tab
 	// though harmless, the repacker should clear this back to zero, its usage is temporary and unofficial
 	if (bss_size == 0)
-		putbe32(size, DINO_NONE);
+		putbe32(size, bss_size);
 	else
 		putbe32(size, bss_size);
 
@@ -492,7 +492,7 @@ int dino_dll::gotable_count(void)
 
 	entries.sort();
 	entries.unique();
-	count += entries.size();
+	count += entries.size() - 1;
 
 	//for (auto const& i : entries) {
 	//	//printf("0x%X\n", i);
@@ -589,9 +589,19 @@ int dino_dll::gotable_exists(Elf_Half id, Elf64_Addr value)
 		}
 	}
 
-	for (int i = 4; i < gotable_count(); i++) // FIXME
+	for (int i = 0; i < gotable_count(); i++) // FIXME
 	{
 		u32 address = getbe32(gotable + (i * sizeof(u32)));
+
+		section* sec = elf.sections[id];
+		if (sec != nullptr) {
+			if (sec->get_name() == ".data") {
+				if (address == entry) {
+					return i + 1;
+				}
+			}
+		}
+
 		if (address == entry) return i;
 	}
 
